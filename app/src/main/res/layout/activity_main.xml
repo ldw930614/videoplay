@@ -40,18 +40,18 @@
                 android:text="离线影院" />
             <TextView
                 android:id="@+id/localvideo"
-                android:drawableTop="@drawable/home_bt"
+                android:drawableTop="@drawable/local_bt"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:drawablePadding="0dp"
                 android:gravity="center"
                 android:textColor="@color/titlecor"
-                android:text="个人中心" />
+                android:text="本地视频" />
 
             <TextView
                 android:id="@+id/aboutmine"
-                android:drawableTop="@drawable/home_bt"
+                android:drawableTop="@drawable/aboutmine_bt"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="50dp"

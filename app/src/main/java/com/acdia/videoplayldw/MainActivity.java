@@ -12,7 +12,6 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private BTFragment btFragment;
 
     @BindView(R.id.main)
     TextView main;
@@ -21,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @BindView(R.id.aboutmine)
     TextView aboutmine;
 
+    private BTFragment homeFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +28,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        initView();
+    }
+
+
+    private void initView()
+    {
         main.setOnClickListener(this);
         localvideo.setOnClickListener(this);
         aboutmine.setOnClickListener(this);
+
+        main.setSelected(true);
+//        homeFragment =BTFragment.instantiate()
     }
 
     @Override
