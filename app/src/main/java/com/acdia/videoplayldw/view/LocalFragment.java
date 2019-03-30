@@ -1,7 +1,5 @@
 package com.acdia.videoplayldw.view;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,26 +12,31 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
-public class BTFragment extends Fragment {
+public class LocalFragment extends Fragment {
+
 
     Unbinder unbinder;
 
-    public static BTFragment btFragment;
+    public static LocalFragment localFragment;
 
-    public static BTFragment getInstance()
+    public static LocalFragment getInstance()
     {
-        if(btFragment == null)
+        if(localFragment == null)
         {
-            btFragment = new BTFragment();
+            localFragment = new LocalFragment();
         }
-        return btFragment;
+        return localFragment;
     }
+    public LocalFragment() {
+        // Required empty public constructor
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_bt, container, false);
+        View view = inflater.inflate(R.layout.fragment_local, container, false);
         unbinder = ButterKnife.bind(this,view);
         initView();
         return view;
@@ -55,4 +58,5 @@ public class BTFragment extends Fragment {
     public void onResume() {
         super.onResume();
     }
+
 }

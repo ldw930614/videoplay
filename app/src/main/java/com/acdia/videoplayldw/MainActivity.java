@@ -1,11 +1,13 @@
 package com.acdia.videoplayldw;
 
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.acdia.videoplayldw.view.BTFragment;
+import com.acdia.videoplayldw.view.LocalFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView aboutmine;
 
     private BTFragment homeFragment;
+    private LocalFragment localFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         aboutmine.setOnClickListener(this);
 
         main.setSelected(true);
-//        homeFragment =BTFragment.instantiate()
+        homeFragment = BTFragment.getInstance();
+        localFragment = LocalFragment.getInstance();
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.content,homeFragment);
+        fragmentTransaction.add(R.id.content,localFragment);
+
+        fragmentTransaction.show(homeFragment);
+        fragmentTransaction.hide(localFragment);
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
     @Override
@@ -67,16 +79,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 main.setSelected(true);
                 localvideo.setSelected(false);
                 aboutmine.setSelected(false);
+
+                FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction1.show(homeFragment);
+                fragmentTransaction1.hide(localFragment);
+                fragmentTransaction1.commit();
                 break;
             case 1:
                 main.setSelected(false);
                 localvideo.setSelected(true);
                 aboutmine.setSelected(false);
+
+                FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction2.hide(homeFragment);
+                fragmentTransaction2.show(localFragment);
+                fragmentTransaction2.commit();
                 break;
             case 2:
                 main.setSelected(false);
                 localvideo.setSelected(false);
                 aboutmine.setSelected(true);
+
+//                FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
+//                fragmentTransaction3.hide(homeFragment);
+//                fragmentTransaction3.hide(localFragment);
+//                fragmentTransaction3.commit();
                 break;
             default:
 
